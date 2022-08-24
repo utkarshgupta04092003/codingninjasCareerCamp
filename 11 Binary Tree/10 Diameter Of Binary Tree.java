@@ -7,6 +7,7 @@ two leaf nodes.
 Here, the distance is measured in terms of the total number of nodes
 present along the path of the two leaf nodes, including both the leaves.
 Example:
+ImageLink - https://files.codingninjas.in/tree-4777.png
 alt txt
 
 The maximum distance can be seen between the leaf nodes 8 and 9. 
