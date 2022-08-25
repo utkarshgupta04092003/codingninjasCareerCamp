@@ -5,10 +5,12 @@ attach it to the left of itself.
 The root will remain the same. So you just need to insert nodes in the given 
 Binary Tree.
 Example:
+image link - https://files.codingninjas.in/seventypercent-4796.png
 alt txt
 
 After making the changes to the above-depicted tree, the updated tree will look 
 like this.
+image link - https://files.codingninjas.in/bt-2-page-2-4794.png
 alt txt
 
 You can see that every node in the input tree has been duplicated and inserted to 
