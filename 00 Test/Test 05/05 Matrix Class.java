@@ -77,102 +77,103 @@ public class mat{
 		
 	// mat(){}
 	
-  public static mat add(mat a,mat b)
-  {
-        int row = a.matrix.length;
-        int col = a.matrix[0].length;
-
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                a.matrix[i][j] += b.matrix[i][j];
+	    public static mat add(mat a,mat b)
+	    {
+            int row = a.matrix.length;
+            int col = a.matrix[0].length;
+            
+            int ans[][] = new int[row][col];
+            for(int i=0;i<row;i++){
+                for(int j=0;j<col;j++){
+                    ans[i][j] = a.matrix[i][j] + b.matrix[i][j];
+                }
             }
-        }
-        return a;
-  }
+            return new mat(ans);
+	    }
+    
+	    public static mat multiply(mat a,mat b)
+	    {
+            
+           
+            int R1 = a.matrix.length;
+            int R2 = b.matrix.length;
+            int C2 = b.matrix[0].length;
+            
+            int arr[][] = new int[R1][C2];
+            mat res = new mat(arr);
+            
+            
+            for (int i = 0; i < R1; i++) {
+                for (int j = 0; j < C2; j++) {
+                    res.matrix[i][j] = 0;
 
-  public static mat multiply(mat a,mat b)
-  {
+                    for (int k = 0; k < R2; k++) {
+                        res.matrix[i][j] += a.matrix[i][k] * b.matrix[k][j];
+                	}
 
+                	// cout << rslt[i][j] << "\t";
+                }
 
-        int R1 = a.matrix.length;
-        int R2 = b.matrix.length;
-        int C2 = b.matrix[0].length;
-
-         int arr[][] = new int[R1][C2];
-        mat res = new mat(arr);
-
-
-        for (int i = 0; i < R1; i++) {
-            for (int j = 0; j < C2; j++) {
-                res.matrix[i][j] = 0;
-
-                for (int k = 0; k < R2; k++) {
-                    res.matrix[i][j] += a.matrix[i][k] * b.matrix[k][j];
-              }
-
-              // cout << rslt[i][j] << "\t";
+                // cout << endl;
             }
-
-            // cout << endl;
-        }
-
-
-        return res;
-  }
-
-
-  public static mat transpose(mat m)
-  {
-
-        int row = m.matrix.length;
-        int col = m.matrix[0].length;
-
-        int res[][] = new int[col][row];
-
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                res[j][i] = m.matrix[i][j];
+	       
+            
+            return res;
+	    }
+    
+    
+	    public static mat transpose(mat m)
+	    {
+            
+            int row = m.matrix.length;
+            int col = m.matrix[0].length;
+            
+            int res[][] = new int[col][row];
+            
+            for(int i=0;i<row;i++){
+                for(int j=0;j<col;j++){
+                    res[j][i] = m.matrix[i][j];
+                }
             }
+            
+            mat result = new mat(res);
+            return result;
+	    }
+    
+ 
+    
+        public static mat rotate(mat m)
+        {
+            int [][] matrix = m.matrix;
+            int n = matrix.length;
+            if (n == 1) {
+                return null;
+            }
+            for (int k=0;k<3;k++){
+                for (int i = 0; i < n / 2; i++) {
+                    for (int j = i; j < n - 1 - i; j++) {
+                        int temp = matrix[i][j];
+                        matrix[i][j] = matrix[n - 1 - j][i];
+                        matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+                        matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+                        matrix[j][n - 1 - i] = temp;
+                    }
+                }
+            }
+            return new mat(matrix);
         }
 
-        mat result = new mat(res);
-        return result;
-  }
+    
+    public void print()
+    {
+	for(int i=0;i<matrix.length;i++)
+	{
+	    for(int j=0;j<matrix[0].length;j++)
+	    {
+		System.out.print(matrix[i][j]+" ");
+	    }
+	    System.out.println();
+	}
+    }
 
-
-  public static mat rotate(mat m)
-  {
-        int row = m.matrix.length;
-        int col = m.matrix[0].length;
-
-        int res[][] = new int[col][row];
-
-        for(int i=row;i>=0;i--)  
-        {  
-            for(int j=0;j<=col;j++)  
-            {  
-              res[j][i] = m.matrix[i][j];
-            }  
-            // System.out.println("\n");  
-
-        }  
-
-
-        mat result = new mat(res);
-        return result;
-  }
-
-
-
-  public void print()
-  {
-      for(int i=0;i<matrix.length;i++)
-      {
-          for(int j=0;j<matrix[0].length;j++)
-          {
-              System.out.print(matrix[i][j]+" ");
-          }
-          System.out.println();
-      }
-  }
 }
