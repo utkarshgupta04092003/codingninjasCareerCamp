@@ -4,10 +4,11 @@
 
 10 queuees completed.
 
+11 Binary Tree completed.
+
 
 Test 05 completed
 
 Test 06 completed
 
-3 question remains in binary tree folder
-
+will start 12 BST...
