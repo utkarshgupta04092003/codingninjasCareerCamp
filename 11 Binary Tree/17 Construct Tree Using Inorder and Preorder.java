@@ -84,5 +84,4 @@ public class Solution {
         
         return buildTree(preOrder,0,preOrder.length-1,inOrder,0,inOrder.length-1);
 	}
-
 }
