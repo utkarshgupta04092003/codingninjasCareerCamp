@@ -8,6 +8,8 @@
 
 12 Binary search Tree completed.
 
+13 trees completed.
+
 
 Test 05 completed
 
