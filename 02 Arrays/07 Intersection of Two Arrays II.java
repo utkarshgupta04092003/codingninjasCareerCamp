@@ -82,7 +82,7 @@ public class Solution{
                 if(arr1[i] == arr2[j]){
                     System.out.print(arr1[i]+" ");
                     arr2[j] = Integer.MIN_VALUE;
-                    // break;
+                    break;
                 }
             }
         }
