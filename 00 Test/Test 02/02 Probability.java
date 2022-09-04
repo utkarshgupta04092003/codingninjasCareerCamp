@@ -16,31 +16,28 @@ Sample Output 1:
 ******************************************************************************************************/
 
 
-
 public class Solution {
     
-    public static int factorial(int n){
-        int fact=1;
-        for(int i=1;i<=n;i++){
-            fact = fact*i;
-        }
-        return fact;
+   public static int fact ( int number )
+    {
+        int ans = 1 ;
+        for ( int i = 1 ; i <= number ; i ++ )
+        ans *= i ;
+        return ans ;
     }
-    
-    public static int combination(int n,int x){
-        
+    public static int ncr ( int num , int r )
+    {
+        int ans = ( fact ( num ) / fact ( num - r ) ) / fact ( r ) ;
+        return ans ;
     }
-    
-    public static int probability(int n,int x){
-                
-      int total = (factorial(8)/((factorial(n)*factorial(8-n))));
+    public static int probability ( int n , int x )
+    {
+        int ans = ncr ( 4 , x ) * ncr ( 4 , n - x ) ;
+        float probab = ans * 1.0f / ncr ( 8 , n ) ;
         
-        int a = ((24/(factorial(x)*factorial(4-x))));
-        int a = ((24/(factorial(x)*factorial(4-x))));
-        
-        
+        return (int)(probab * 100) ;
     }
-    
+
 
 }
 
