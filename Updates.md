@@ -1,12 +1,7 @@
 
 
 
-01 java
-
-  01
-  02
-  03
-  
+01 java completed.
 
 02 Arrays completed.
 
@@ -33,8 +28,8 @@
 13 trees completed.
 
 
-Test 05 completed
+Test 1,2,5,6 completed.
+Course test 1 me ak question bacha hai
 
-Test 06 completed
 
-will start 12 BST...
+will start 14 soon....
