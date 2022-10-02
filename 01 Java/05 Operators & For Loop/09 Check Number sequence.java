@@ -114,4 +114,52 @@ public class Main {
 
 
 
+// without array
+import java.util.Scanner;
+public class Main {
+	
+     public static void main(String[] args) {
+        // Write your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int pre = sc.nextInt();
+        int i=1 ;
+        boolean isDec = true ;
+
+
+        while (i <= n-1)
+        {
+            int curr = sc.nextInt();
+
+            if (pre==curr)
+            {
+                System.out.println(false);
+                return ;
+            }
+            if (curr<pre )
+            {
+                if( isDec == false ){
+                    System.out.println("false");
+                    return;
+                }
+               
+            }
+            else
+            {
+                if ( isDec == true )
+                {
+                    isDec = false;
+                }
+            }
+            
+            pre = curr;
+            i++ ;
+
+        }
+        System.out.println("true");
+    }
+}
+
+
 
