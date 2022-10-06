@@ -39,67 +39,54 @@ Sample Output 2 :
 // Recursive
 public class Solution {
 
-	public static int minCount(int n,int dp[]) {
-		//Your code goes here/
-        if(n==0)
-            return 0;
+    private static int minCountHelper(int n){
+        if(n == 0 || n==1 || n==2 || n==3)
+            return n;
         
-        int minAns = Integer.MAX_VALUE;
-        
+        int ans = Integer.MAX_VALUE;
         for(int i=1;i*i<=n;i++){
-            int currAns = minCount(n-(i*i),dp);
-            
-            if(minAns > currAns)
-                minAns = currAns;
+            ans = Math.min(ans,1+minCountHelper(n-i*i));
         }
-        
-        return minAns+1;
-        
-	}
-    
-    public static int minCount(int n) {
-		int dp[] = new int[n+1];
-        for(int i=0;i<=n;i++){
-            dp[i] = -1;
-        }
-        
-        return minCount(n,dp);
+        return ans;
     }
+	public static int minCount(int n) {
+		//Your code goes here
+        return minCountHelper(n);
+	}
 
 }
 
 
 
-//Dp
+// Using DP
+
 public class Solution {
 
-	public static int minCount(int n) {
-		//Your code goes here/
-        if(n==0)
-            return 0;
-        
-        int dp[] = new int[n+1];
-        dp[0] = 0;
-        
-        
-       for(int i=1;i<=n;i++){
-                   
-           int minAns = Integer.MAX_VALUE;
+            
+    static int dp[];
 
-            for(int j=1;j*j<=i;j++){
-            
-            int currAns = dp[i-(j*j)];
-          
-            
-            if(minAns > currAns)
-                minAns = currAns;
+    private static int minCountHelper(int n){
+        if(n == 0 || n==1 || n==2 || n==3)
+            return n;
         
-            }
-           dp[i] = minAns+1;
-       }
+        if(dp[n] != Integer.MAX_VALUE)
+            return dp[n];
         
+        for(int i=1;i*i<=n;i++){
+            dp[n] = Math.min(dp[n],1+minCountHelper((n-i*i)));
+        }
         return dp[n];
+    }
+    public static int minCount(int n) {
+		//Your code goes here
+    
+        dp = new int[n+1];
         
-	}
- 
+        for(int i=0;i<n+1;i++)
+            dp[i] = Integer.MAX_VALUE;
+        
+
+        return minCountHelper(n);
+    }
+
 }
