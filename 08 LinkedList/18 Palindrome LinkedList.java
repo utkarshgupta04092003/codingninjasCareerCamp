@@ -96,3 +96,97 @@ public class Solution {
         return checkPalindrome( new NodeWrapper(head), head);
     }
 }
+
+
+// using reverse second half part
+
+public class Solution {
+
+	public static boolean isPalindrome(LinkedListNode<Integer> head) {
+        
+        if(head == null || head.next == null)
+            return true;
+        
+        boolean res=true;
+        
+        
+        
+       	LinkedListNode<Integer> second_half=null;  
+        
+        LinkedListNode<Integer>fast_ptr = head;
+        LinkedListNode<Integer>slow_ptr = head;
+        LinkedListNode<Integer>prev_of_slow_ptr = head;
+        LinkedListNode<Integer>midnode = null;
+        
+        while (fast_ptr != null&& fast_ptr.next != null) {
+                fast_ptr = fast_ptr.next.next;
+ 
+                
+                prev_of_slow_ptr = slow_ptr;
+                slow_ptr = slow_ptr.next;
+            }
+ 
+            if (fast_ptr != null) {
+                midnode = slow_ptr;
+                slow_ptr = slow_ptr.next;
+            }
+            second_half = slow_ptr;
+			prev_of_slow_ptr.next= null; 
+      
+        // printList(second_half);
+        second_half =  reverse(second_half); 					
+        
+        // printList(second_half);
+
+        res=compareList(head,second_half);		
+       
+        return res;
+        }
+    
+    
+        
+//reversing second half of the list
+    
+    public static LinkedListNode<Integer> reverse(LinkedListNode<Integer> head3){
+        LinkedListNode<Integer> prev=null;
+        LinkedListNode<Integer> temp=head3;
+        LinkedListNode<Integer> next=null;
+        
+        while(temp!=null){
+            next=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=next;
+        }
+        head3=prev;
+        return head3;
+}
+    
+    
+   public static boolean compareList(LinkedListNode<Integer> head1, LinkedListNode<Integer> head2){
+       LinkedListNode<Integer> temp1=head1;
+       LinkedListNode<Integer> temp2=head2;
+       while(temp1!=null && temp2!=null){
+           if(temp1.data==temp2.data){
+               temp1=temp1.next;
+               temp2=temp2.next;
+           }
+           else{
+               return false;
+           }
+       }
+          if(temp1==null && temp2==null){
+               return true;
+           }
+      		   return false;
+       }
+    
+    
+    public static void printList(LinkedListNode<Integer> head){
+        while(head != null){
+            System.out.print(head.data+" ");
+            head = head.next;
+        }
+    }
+       
+   } 
