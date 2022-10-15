@@ -62,35 +62,36 @@ public class Main {
         
 	}
 }
+
+
+
+
+
+
+
 import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-	
-    	Scanner s = new Scanner(System.in);
-    	int n = s.nextInt();
-   		int[] binaryNum = new int[1000];
-   
-        if(n == 0){
-            System.out.print("0");
-            return;
+		// Write your code here
+		Scanner s = new Scanner(System.in);
+        
+        int binary = s.nextInt();
+        
+        int dup = binary;
+        
+        int decimal = 0;
+        int c = 1;
+        while(dup > 0){
+            int last = dup%10;
+            dup /= 10;
+            
+            decimal += last*c;
+            c*=2;
+            
         }
-        // counter for binary array
-        int i = 0;
-        while (n > 0) 
-        {
-            // storing remainder in binary array
-            binaryNum[i] = n % 2;
-            n = n / 2;
-            i++;
-        }
-   
-        // printing binary array in reverse order
         
-        for (int j = i - 1; j >= 0; j--)
-            System.out.print(binaryNum[j]);
-        
-        
+        System.out.print(decimal);
 	}
 }
 
